@@ -1,7 +1,10 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     coffee = require('gulp-coffee'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    browserify = require('gulp-browserify');
+    //jquery = require('jquery'),
+   // mustache = require('mustache');
 var coffeeSource = ['components/coffee/tagline.coffee'];
 var jsSources = [
     'components/scripts/rclick.js',
@@ -19,6 +22,7 @@ gulp.task('coffee', function(){
 gulp.task('js', function(){
           gulp.src(jsSources)
             .pipe(concat('script.js'))
+          .pipe(browserify())
 .pipe(gulp.dest('builds/development/js'))
           });
 
