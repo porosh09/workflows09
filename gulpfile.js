@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     compass = require('gulp-compass'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
-    minifyhtml = require('gulp-minify-html');
+    minifyhtml = require('gulp-minify-html'),
+    jsonminify = require('gulp-jsonminify');
     //jquery = require('jquery'),
    // mustache = require('mustache');
 var coffeeSource = ['components/coffee/tagline.coffee'];
@@ -82,7 +83,9 @@ gulp.task('html', function(){
 });
 
 gulp.task('json', function(){
-    gulp.src(outputDir + 'js/*.json')
+    gulp.src('builds/development/js/*.json')
+    .pipe(gulpif(env === 'production', jsonminify()))
+    .pipe(gulpif(env === 'production', gulp.dest('builds/production/js')))
     .pipe(connect.reload())
 });
 
