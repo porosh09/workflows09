@@ -40,7 +40,7 @@ gulp.task('compass', function(){
           });
 
 
-//gulp.task('all',['coffee', 'js', 'compass']);
+gulp.task('default',['coffee', 'js', 'compass']);
 
 
 
