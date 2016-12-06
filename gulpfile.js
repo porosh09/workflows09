@@ -38,9 +38,62 @@ gulp.task('compass', function(){
           .on('error',gutil.log))
 .pipe(gulp.dest('builds/development/css'))
           });
-
+gulp.task('watch',function(){
+    gulp.watch(coffeeSource, ['coffee']);
+    gulp.watch(jsSources, ['js']);
+     gulp.watch('components/sass/*.scss', ['compass']);
+});
 
 gulp.task('default',['coffee', 'js', 'compass']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
